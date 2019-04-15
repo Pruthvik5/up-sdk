@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UrbanPiper Developer Docs | SDK</title>
+        <link rel="stylesheet" href="style.css">
+        <style>.mySlides {display:none;}</style>
+    </head>
+    <body>
+        <div class="header">
+            <nav>
+                <ul class="header-nav">
+                    <li><a href="/index.html"><b>UrbanPiper</b> for Developers</a></li>
+                    <li class="header-nav-right button-nav"><a href="/contact-us.html">Get Started</a></li>
+                    <li class="header-nav-right"><a href="#support">Support</a></li>
+                    <li class="header-nav-right"><a href="https://blog.urbanpiper.com/" target="_blank">Blog</a></li>
+                    <li class="header-nav-right"><a href="/docs.html">Docs</a></li>
+                    <li class="header-nav-right"><a href="https://www.urbanpiper.com" target="_blank">Home</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="content">
+           <div class="banner-slider">
+                <img class="mySlides banner-slider-img" src="../images/api-image.jpg">
+                <img class="mySlides banner-slider-img" src="../images/api-image-1.jpg">
+                <img class="mySlides banner-slider-img" src="../images/api-image-2.jpg">
+                <img class="mySlides banner-slider-img" src="../images/api-image-3.jpg">
+            </div>
+            <div class="home-container">
+                <h2>What's New?</h2>
+                <div class="row">
+                    <div class="col-4 section-1">
+                        <h3>Introduction to New UP Login SDK</h3>
+                        <p>A set of client-side functionality <br>for adding Login and API calls.</p>
+                        <a href="/login.html" class="know-more">Know More</a>
+                    </div>
+                    <div class="col-8 section-2">
+                        <h3>Update in the Ordering APIs</h3>
+                        <p>Added Constraints and Expectations in ordering APIs</p>
+                        <a href="https://api-ordering-docs.urbanpiper.com/" class="know-more" target="_blank">Know More</a>
+                    </div>
+                    <div class="col-12 section-3">
+                        <h3>New HUB video is Out!</h3>
+                        <p>How EatFit solves the operational challenges of aggregators</p>
+                        <a href="https://vimeo.com/286387959" class="know-more" target="_blank">Play Video</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="row footer-row">
+                <div class="col-3 column-one">
+                    <div class="col-6">
+                    <a href="https://www.urbanpiper.com">
+                        <img src="../images/logo.png" class="footer-logo"></a>
+                    </div>
+                    <div class="col-12 footer-address">
+                        <h4>UrbanPiper Technology Pvt. Ltd.</h4>
+                        <p style="color: #eeeeee; font-size: 14px;">#204, Brigade IRV Centre<br>Whitefield, Bangalore - 560066</p>
+                    </div>
+                </div>
+                <div class="col-6 column-two">
+                    <ul class="footer-contents">
+                        <li><h4><b>Company</b></h4></li>
+                        <li><a href="https://urbanpiper.com/team.html" target="_blank">About us</a></li>
+                        <li><a href="https://angel.co/urbanpiper-1/jobs" target="_blank">Career</a></li>
+                        <li><a href="https://blog.urbanpiper.com/" target="_blank">Blog</a></li>
+                        <li><a href="https://urbanpiper.com/privacy.html" target="_blank">Privacy Terms</a></li>
+                    </ul>
+                </div>
+                <div class="col-9 column-three">
+                    <h4>Contact Us</h4>
+                    <p style="color: #eeeeee;">+91 89718 91163<br><a href="mailto:support@urbanpiper.com">support@urbanpiper.com</a></p>
+                </div>
+                <div class="col-12 column-two">
+                    <ul class="footer-contents">
+                        <li><h4><b>Products</b></h4></li>
+                        <li><a href="https://urbanpiper.com/loyalty.html" target="_blank">Loyalty</a></li>
+                        <li><a href="https://urbanpiper.com/hub.html" target="_blank">Hub</a></li>
+                        <li><a href="">OMS</a></li>
+                        <li><a href="http://satellite.urbanpiper.com" target="_blank">Satellite</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}    
+              x[myIndex-1].style.display = "block";  
+              setTimeout(carousel, 5000); // Change image every 2 seconds
+            }
+        </script>
+    </body>
+</html>

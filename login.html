@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>UrbanPiper Developer Docs | SDK</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="icon" type="image/png" href="../images/favicon.png">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js" type="text/javascript" charset="utf-8"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+    
+<!-- ------------------------- Body - header ------------------------>
+
+   <body>
+      <div class="main-container">
+            <header>
+               <div class="header">
+                  <nav>
+                     <ul class="header-nav">
+                        <li><a href="/index.html"><b>UrbanPiper</b> for Developers</a></li>
+                        <li class="header-nav-right button-nav"><a href="#getstarted">Get Started</a></li>
+                        <li class="header-nav-right"><a href="#support">Support</a></li>
+                        <li class="header-nav-right"><a href="#tools">Tools</a></li>
+                        <li class="header-nav-right"><a href="/docs.html">Docs</a></li>
+                     </ul>
+                  </nav>
+               </div>
+            </header>
+          
+<!-- ------------------------- Body - content ------------------------>
+
+            <main class="content-main">
+               <div class="row">
+                   
+<!-- ------------------------- Left  section ------------------------>
+                   
+                  <div class="column-left">
+                     <div class="sidenav">
+                        <a href="/login.html">Set up</a>
+                        <a href="/biz_info.html">Biz Info</a>
+                        <a href="/authentication.html">Authentication</a>
+                        <a href="/user.html">User</a>
+                        <a href="/gallery.html">Gallery</a>
+                        <a href="/stores.html">Stores</a>
+                        <a href="/checkout.html">Checkout</a>
+                        <a href="/catalogue.html">Catalogue</a>
+                        <a href="/cart.html">Cart</a>
+                        <a href="/order.html">Order</a>
+                        <a href="/payment-gateway.html">Payment Gateway</a>
+                     </div>
+                  </div>
+                   
+<!-------------------------------Right section ------------------------>
+                   
+                  <div class="column-right">
+                     <div class="container-login">
+                        <div class="intro-header">
+                           <p>JAVASCRIPT SDK FOR UP</p>
+                           <p class="intro-desc">A set of client-side functionality for adding Login and API calls.</p>
+                        </div>
+                        <hr>
+                        <br>
+                        <div>
+                           <h2>Basic Setup</h2>
+                           <p>The UP SDK for JavaScript doesn't have any standalone files that need to be downloaded or installed, instead, you simply need to include a short piece of regular JavaScript in your HTML.</p>
+                        </div>
+                        <div id="editorRequest">
+&lt;script src="https://test-sdk.urbanpiper.com"&gt;&lt;/script&gt;
+&lt;script&gt;
+UP_SDK.init({
+"BIZ_ID": 73090796,
+"API_KEY": "e0cae0a32f33313f984da864cdee5db520bb144f",
+"USERNAME": "biz_adm_clients_iQUgwWoZeyTK",
+"ENV": "staging",
+"LANG":"jp"
+});
+&lt;/script&gt;
+&lt;script&gt;
+.... call methods
+&lt;/script&gt;
+                        </div>
+                        <br>
+                        <div>
+                           <h2>Non-blocking way:</h2>
+                           <p>
+                              This will asynchronously load the SDK into your pages. The async load means that it does not block loading other elements of your page. You should insert the following snippet of code it directly after the opening <span class="intro-code">body</span> tag on each page you want to load it.
+                           </p>
+                        </div>
+                        <div id="editorNonBlock">
+window.UPAsyncInit = ()=>{
+UP_SDK.init({
+BIZ_ID: &lt;biz_id&gt;,
+API_KEY: &lt;apikey&gt;,
+USERNAME: &lt;username&gt;,
+ENV:"staging",
+LANG:"en" 
+})
+}
+(function(d){
+var js, id = 'up-jssdk', ref = d.getElementsByTagName('script')[0];
+if (d.getElementById(id)) {return;}
+js = d.createElement('script'); js.id = id; js.async = true;
+js.src = "https://test-sdk.urbanpiper.com/";
+js.onload = UPAsyncInit;
+ref.parentNode.insertBefore(js, ref);
+}(document));
+                        </div>
+                        <br>
+                        <div>
+                           <h2>NPM:</h2>
+                           <p>Run <span class="intro-code">npm install upsdk</span></p>
+                        </div>
+                        <div id="editorNPM">
+const UP_SDK = require('upsdk');
+UP_SDK.init({
+"BIZ_ID": 76720224,
+"API_KEY": "aed73f0aee77471d360b69b1fc4346c37d0d3ca4",
+"USERNAME": "biz_adm_clients_IcEVXvDMlSAC",
+"ENV": "staging",
+"LANG":"jp"
+})
+export default UP_SDK;
+                        </div>
+                        <br>
+                        <div>
+                           <h2>Init</h2>
+                           <p><span class="intro-code"><b>&#9758;</b> &nbsp;Initialize and setup the SDK. All other SDK methods must be called after this one.
+                              <i>init</i> is a synchronus call and it returns certain persistent information that might be required later.<br>Any sdk method should be called after init call.</span>
+                           </p>
+                           <p>Reqiured params:</p>
+                        </div>
+                        <div id="editorInit">
+{
+    "BIZ_ID":  "23425345",
+    "API_KEY": "bb30b3e53176f7b249bf0b16652a5afd0dc5f9de",
+    "USERNAME": "biz_tst_vjUSsDcewHRIZCFjCARVZn",
+    "ENV": &lt;staging|production&gt;,
+    "LANG": "en"
+}
+                        </div>
+                        <p>All functions are promised based. Can be used as:</p>
+                        <span class="intro-input">let resp = "await UP_SDK.login(params)";</span>
+                        <br>
+                        OR
+                        <br>
+                        <span class="intro-input">UP_SDK.login(params).then((resp)=>{}).catch((err)=>{});</span>
+                        <p>You can change the language later on. - <a href="/">Language</a></p>
+                        <br>
+                        <h2>Response structure:</h2>
+                        <p>The response for all methods is:</p>
+                        <div id="editorResponse">
+{
+    "success": "&lt;true|false&gt;"
+    data:{
+            },
+    error_message:"error message"
+} 
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </main>
+            
+<!-- ----------------------------footer -------------------------------->
+            <footer>
+               <div class="footer">
+                  <div class="row footer-row">
+                     <div class="col-3 column-one">
+                        <div class="col-6">
+                           <a href="https://www.urbanpiper.com">
+                           <img src="../images/logo.png" class="footer-logo"></a>
+                        </div>
+                        <div class="col-12 footer-address">
+                           <h4>UrbanPiper Technology Pvt. Ltd.</h4>
+                           <p style="color: #eeeeee; font-size: 14px;">#204, Brigade IRV Centre<br>Whitefield, Bangalore - 560066</p>
+                        </div>
+                     </div>
+                     <div class="col-6 column-two">
+                        <ul class="footer-contents">
+                           <li>
+                              <h4><b>Company</b></h4>
+                           </li>
+                           <li><a href="https://urbanpiper.com/team.html" target="_blank">About us</a></li>
+                           <li><a href="https://angel.co/urbanpiper-1/jobs" target="_blank">Career</a></li>
+                           <li><a href="https://blog.urbanpiper.com/" target="_blank">Blog</a></li>
+                           <li><a href="https://urbanpiper.com/privacy.html" target="_blank">Privacy Terms</a></li>
+                        </ul>
+                     </div>
+                     <div class="col-9 column-three">
+                        <h4>Contact Us</h4>
+                        <p style="color: #eeeeee;">+91 89718 91163<br><a href="mailto:support@urbanpiper.com">support@urbanpiper.com</a></p>
+                     </div>
+                     <div class="col-12 column-two">
+                        <ul class="footer-contents">
+                           <li>
+                              <h4><b>Products</b></h4>
+                           </li>
+                           <li><a href="https://urbanpiper.com/loyalty.html" target="_blank">Loyalty</a></li>
+                           <li><a href="https://urbanpiper.com/hub.html" target="_blank">Hub</a></li>
+                           <li><a href="">OMS</a></li>
+                           <li><a href="http://satellite.urbanpiper.com" target="_blank">Satellite</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+                
+<!--------------------------- JS for codeblock ------------------------>
+                
+               <script type="application/javascript">
+                  var editorRequest = ace.edit("editorRequest");
+                  editorRequest.setTheme("ace/theme/monokai");
+                  editorRequest.getSession().setMode("ace/mode/javascript");
+               </script>
+               <script type="application/javascript">
+                  var editorNonBlock = ace.edit("editorNonBlock");
+                  editorNonBlock.setTheme("ace/theme/monokai");
+                  editorNonBlock.getSession().setMode("ace/mode/javascript");
+               </script>
+               <script type="application/javascript">
+                  var editorNPM = ace.edit("editorNPM");
+                  editorNPM.setTheme("ace/theme/monokai");
+                  editorNPM.getSession().setMode("ace/mode/javascript");
+               </script>
+               <script type="application/javascript">
+                  var editorResponse = ace.edit("editorResponse");
+                  editorResponse.setTheme("ace/theme/monokai");
+                  editorResponse.getSession().setMode("ace/mode/javascript");
+               </script>
+               <script type="application/javascript">
+                  var editorInit = ace.edit("editorInit");
+                  editorInit.setTheme("ace/theme/monokai");
+                  editorInit.getSession().setMode("ace/mode/javascript");
+               </script>
+            </footer>
+         </div>
+   </body>
+</html>

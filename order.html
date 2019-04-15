@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>UrbanPiper Developer Docs | SDK</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="icon" type="image/png" href="../images/favicon.png">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js" type="text/javascript" charset="utf-8"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<!-- ------------------------- Body - header ------------------------>
+   <body>
+      <div class="main-container">
+         <header>
+            <div class="header">
+               <nav>
+                  <ul class="header-nav">
+                     <li><a href="/index.html"><b>UrbanPiper</b> for Developers</a></li>
+                     <li class="header-nav-right button-nav"><a href="#getstarted">Get Started</a></li>
+                     <li class="header-nav-right"><a href="#support">Support</a></li>
+                     <li class="header-nav-right"><a href="#tools">Tools</a></li>
+                     <li class="header-nav-right"><a href="/docs.html">Docs</a></li>
+                  </ul>
+               </nav>
+            </div>
+         </header>
+<!-- ------------------------- Body - content ------------------------>
+         <main class="content-main">
+            <div class="row">
+<!-- ------------------------- Left  section ------------------------>
+               <div class="column-left">
+                  <div class="sidenav">
+                     <a href="/login.html">Set up</a>
+                     <a href="/biz_info.html">Biz Info</a>
+                     <a href="/authentication.html">Authentication</a>
+                     <a href="/user.html">User</a>
+                     <a href="/gallery.html">Gallery</a>
+                     <a href="/stores.html">Stores</a>
+                     <a href="/checkout.html">Checkout</a>
+                     <a href="/catalogue.html">Catalogue</a>
+                     <a href="/cart.html">Cart</a>
+                     <a href="/order.html">Order</a>
+                     <a href="/payment-gateway.html">Payment Gateway</a>
+                  </div>
+               </div>
+<!-------------------------------Right section ------------------------>
+               <div class="column-right">
+                  <div class="container-login">
+                     <div class="intro-subheader">
+                        <h1>PLACE ORDER</h1>
+                        <p class="intro-desc">A set of client-side functionality for Order related components</p>
+                     </div>
+                     <hr>
+                     <br>
+                     <p>Placing order involves two steps:<br>
+                        <b>Note:</b> You should have an active checkout session.<a href="/checkout.html">Read more about checkout session</a>
+                     </p>
+                     <br>
+                     <div class="intro-subheader">
+                        <h2>1) Preprocess the order to create a bill.</h2>
+                        <p><span class="intro-input">c.makeBill()</span> - This creates a bill object</p>
+                        <p><b>Important:</b> The bill object will contain the available payment options for that specific order. User should not be allowed to select any other payment option while placing an order.</p>
+                        <p>However, this values can be overridden by passing the obj in <span class="intro-input">.makeBill</span></p>
+                        <p><span class="intro-input">c.makeBill</span>will always have to be called before calling placing order.</p>
+                        <p><span class="intro-input">c.makeBill</span>will return the bill which includes all required information that can be shown in UI.</p>
+                        <p><b>NOTE:</b> Any charges, total, taxes should not be calculated client side. Information will be available in the response of <span class="intro-input">c.makeBill</span>. Or the last generated bill can be accessed by calling <span class="intro-input">.getBill</span></p>
+                     </div>
+                     <br>
+                     <div class="intro-subheader">
+                        <h2>2) Set delivery address:</h2>
+                        <p>If fulfillment mode is <span class="intro-input">delivery</span> you must provide a valid address:<br>
+                           You can call <span class="intro-input">c.setAddress(param)</span> where params can be:<br><a href="/useraddress">Read more about user addresses</a>
+                        </p>
+                        <p>For logged in user param is <span class="intro-input">{address_id}</span>:</p>
+                     </div>
+                     <div id="editorUser">
+{
+    "address_id":"&lt;address_id&gt;"
+}
+                     </div>
+                     <p>For guest user the param is:</p>
+                     <div id="editorGuest">
+{
+    "address_1":"&lt;address line 1&gt;",
+    "address_2":"&lt;address line 2 | Opptional&gt;",
+    "sub_locality": "&lt;sub locality&gt;",
+    "city": "&lt;city&gt;",
+    "pin": "&lt;pin | Opptional&gt;",
+    "lat": "&lt;latitude | Opptional&gt;", 
+    "lng": "&lt;longitude | Opptional&gt;"     
+}
+                     </div>
+                     <br>
+                     <div class="intro-subheader">
+                        <h2>3) Place order:</h2>
+                        <span class="intro-input">c.placeOrder(params)</span>
+                        <p>Params</p>
+                     </div>
+                     <div id="editorOrder">
+{
+    "phone": "&lt;phone no&gt;",
+    "payment_option": "&lt;cash | wallet&gt;",
+    "delivery_datetime": "&lt;timestamp&gt;",
+    "instructions": "&lt;instructions&gt;"
+}
+                     </div>
+                     <p><b>Important</b>: Phone is required in payload if it's a guest checkout.</p>
+                     <p>On success, ideally <span class="intro-input">c.destroyCart</span> should be called.</p>
+                     <p><b>NOTE:</b> <span class="intro-input">c</span> is active checkout instance</p>
+                     <br>
+                  </div>
+               </div>
+            </div>
+         </main>
+<!-- ----------------------------footer -------------------------------->
+         <footer>
+            <div class="footer">
+               <div class="row footer-row">
+                  <div class="col-3 column-one">
+                     <div class="col-6">
+                        <a href="https://www.urbanpiper.com">
+                        <img src="../images/logo.png" class="footer-logo"></a>
+                     </div>
+                     <div class="col-12 footer-address">
+                        <h4>UrbanPiper Technology Pvt. Ltd.</h4>
+                        <p style="color: #eeeeee; font-size: 14px;">#204, Brigade IRV Centre<br>Whitefield, Bangalore - 560066</p>
+                     </div>
+                  </div>
+                  <div class="col-6 column-two">
+                     <ul class="footer-contents">
+                        <li>
+                           <h4><b>Company</b></h4>
+                        </li>
+                        <li><a href="https://urbanpiper.com/team.html" target="_blank">About us</a></li>
+                        <li><a href="https://angel.co/urbanpiper-1/jobs" target="_blank">Career</a></li>
+                        <li><a href="https://blog.urbanpiper.com/" target="_blank">Blog</a></li>
+                        <li><a href="https://urbanpiper.com/privacy.html" target="_blank">Privacy Terms</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-9 column-three">
+                     <h4>Contact Us</h4>
+                     <p style="color: #eeeeee;">+91 89718 91163<br><a href="mailto:support@urbanpiper.com">support@urbanpiper.com</a></p>
+                  </div>
+                  <div class="col-12 column-two">
+                     <ul class="footer-contents">
+                        <li>
+                           <h4><b>Products</b></h4>
+                        </li>
+                        <li><a href="https://urbanpiper.com/loyalty.html" target="_blank">Loyalty</a></li>
+                        <li><a href="https://urbanpiper.com/hub.html" target="_blank">Hub</a></li>
+                        <li><a href="">OMS</a></li>
+                        <li><a href="http://satellite.urbanpiper.com" target="_blank">Satellite</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+             
+<!----------------------- JS code block---------------------------->
+             
+            <script type="application/javascript">
+               var editorUser = ace.edit("editorUser");
+               editorUser.setTheme("ace/theme/monokai");
+               editorUser.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorGuest = ace.edit("editorGuest");
+               editorGuest.setTheme("ace/theme/monokai");
+               editorGuest.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorOrder = ace.edit("editorOrder");
+               editorOrder.setTheme("ace/theme/monokai");
+               editorOrder.getSession().setMode("ace/mode/javascript");
+            </script>
+         </footer>
+      </div>
+   </body>
+</html>

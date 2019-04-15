@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>UrbanPiper Developer Docs | SDK</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="icon" type="image/png" href="../images/favicon.png">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js" type="text/javascript" charset="utf-8"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <!-- ------------------------- Body - header ------------------------>
+   <body>
+      <div class="main-container">
+         <header>
+            <div class="header">
+               <nav>
+                  <ul class="header-nav">
+                     <li><a href="/index.html"><b>UrbanPiper</b> for Developers</a></li>
+                     <li class="header-nav-right button-nav"><a href="#getstarted">Get Started</a></li>
+                     <li class="header-nav-right"><a href="#support">Support</a></li>
+                     <li class="header-nav-right"><a href="#tools">Tools</a></li>
+                     <li class="header-nav-right"><a href="/docs.html">Docs</a></li>
+                  </ul>
+               </nav>
+            </div>
+         </header>
+         <!-- ------------------------- Body - content ------------------------>
+         <main class="content-main">
+            <div class="row">
+               <!-- ------------------------- Left  section ------------------------>
+               <div class="column-left">
+                  <div class="sidenav">
+                     <a href="/login.html">Set up</a>
+                     <a href="/biz_info.html">Biz Info</a>
+                     <a href="/authentication.html">Authentication</a>
+                     <a href="/user.html">User</a>
+                     <a href="/gallery.html">Gallery</a>
+                     <a href="/stores.html">Stores</a>
+                     <a href="/checkout.html">Checkout</a>
+                     <a href="/catalogue.html">Catalogue</a>
+                     <a href="/cart.html">Cart</a>
+                     <a href="/order.html">Order</a>
+                     <a href="/payment-gateway.html">Payment Gateway</a>
+                  </div>
+               </div>
+               <!-------------------------------Right section ------------------------>
+               <div class="column-right">
+                  <div class="container-login">
+                     <div class="intro-header">
+                        <p>AUTHENTICATION</p>
+                        <p class="intro-desc">A set of client-side functionality for doing the authentication for Social Login and Phone Login.</p>
+                     </div>
+                     <hr>
+                     <br>
+                     <!-------------------------  Body --------------------------->
+                     <div class="intro-subheader">
+                        <h1>Types of Authentication:</h1>
+                        <ol>
+                           <li>Phone Authentication</li>
+                           <li>Social Authentication</li>
+                           <li>Reusing Authenticated Session</li>
+                        </ol>
+                     </div>
+                     <hr>
+                     <!--------------- Phone Authentication --------------->
+                     <div class="intro-subheader">
+                        <h2><u>Phone Authentication</u></h2>
+                        <!------------------ .login(params) ----------------->
+                        <h3>.login(params)</h3>
+                        <p><span class="intro-code"><b>&#9758;</b> &nbsp;Log in user with phone number and password.</span></p>
+                     </div>
+                     <div id="editorRequestAuth">
+{
+    "phone":"+919833010430",
+    "password":"123456"
+}
+                     </div>
+                     <br>
+                     <!------------------ .logout() ----------------->
+                     <div class="container-init">
+                        <div>
+                           <h3>.logout()</h3>
+                           <p><span class="intro-code"><b>&#9758;</b> &nbsp;Log out user. It will remove auth related information from localStorage.</span></p>
+                        </div>
+                        <br>
+                        <!------------------ .createUser(params) ----------------->
+                        <div>
+                           <h3>.createUser(params)</h3>
+                           <p><span class="intro-code"><b>&#9758;</b> &nbsp;Create new user</span></p>
+                           <p>Params (Phone and password is required):</p>
+                        </div>
+                        <div id="editorCreateUser">
+{
+    "phone":"+919833010430",
+    "password":"123456",
+    "email":"mukesh@urbanpiper.com",
+    "name":"Mukesh"
+}
+                        </div>
+                        <br>
+                        <!------------------ verifyPhoneno(params) ----------------->
+                        <div>
+                           <h3>.verifyPhoneno(params)</h3>
+                           <p><span class="intro-code"><b>&#9758;</b> &nbsp;After creating user, the user needs to verify the phone no.</span></p>
+                           <p>Required Params</p>
+                        </div>
+                        <div id="editorVerifyPhone">
+{
+    "phone":"+919833010430",
+    "pin":"12345"
+}
+                        </div>
+                        <br>
+                        <!------------------ resendOtp(params) ----------------->
+                        <div>
+                           <h3>.resendOtp(params)</h3>
+                           <p><span class="intro-code"><b>&#9758;</b> &nbsp;To re-send the otp for verification to the registered mobile no.</span></p>
+                           <p>Required Params</p>
+                           <div id="editorResendOtp">
+{
+    phone:"+919833010430"
+}
+                           </div>
+                        </div>
+                        <br>
+                        <!------------------ forgotPassword(params) ----------------->
+                        <div>
+                           <h3>.forgotPassword(params)</h3>
+                           <p><span class="intro-code"><b>&#9758;</b> &nbsp;Generate token that will be used to reset password.</span></p>
+                           <p>Required Params</p>
+                        </div>
+                        <div id="editorForgotPassword">
+{
+    "phone":"+919833010430"
+}
+                        </div>
+                        <br>
+                        <!------------------ resetPassword(params) ----------------->
+                        <div>
+                           <h3>.resetPassword(params)</h3>
+                           <p><span class="intro-code"><b>&#9758;</b> &nbsp;To reset password with token.</span></p>
+                           <p>Required Params</p>
+                        </div>
+                        <div id="editorResetPassword">
+{
+    "phone":"+919833010430",
+    "pin":"1234", 
+    "new_password1":"12312", 
+    "new_password2":"12312"
+}
+                        </div>
+                     </div>
+                     <br>
+                     <hr>
+                     <!--------------- SOCIAL AUTHENTICATION --------------->
+                     <div class="intro-subheader">
+                        <h2><u>Social Authentication</u></h2>
+                        <h3>Dependency</h3>
+                        <p>You have to get developer key and initialize FB and Google SDK separately.</p>
+                     </div>
+                     <div class="container-init">
+                        <!------------------- FACEBOOK  ------------------------->
+                        <div class="intro-subheader">
+                           <h3>Facebook:</h3>
+                        </div>
+                        <div id="editorFacebook">
+(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_US/sdk.js";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+window.fbAsyncInit = function() {
+FB.init({
+appId      : "&lt;facbook-app-id&gt;",
+cookie     : true,  // enable cookies to allow the server to access
+xfbml      : true,  // parse social plugins on this page
+version    : 'v2.8' // use graph api version 2.8
+});
+}
+                        </div>
+                        <!------------------- Google  ------------------------->
+                        <div class="intro-subheader">
+                           <h3>Google:</h3>
+                        </div>
+                        <div id="editorGoogle">
+var script = document.createElement("script");
+script.src = "https://apis.google.com/js/platform.js?onload=googleSignInInit";
+script.type = "text/javascript";
+document.getElementsByTagName("head")[0].appendChild(script);
+function googleSignInInit(){
+gapi.load('auth2', function(){
+// Retrieve the singleton for the GoogleAuth library and set up the client.
+window.auth2 = gapi.auth2.init({
+client_id: "&lt;google-client-id&gt;",
+cookiepolicy: 'single_host_origin',
+// Request scopes in addition to 'profile' and 'email'
+scope: 'profile email'
+});
+});
+}
+                        </div>
+                        <p>Create social login instance for each provider:</p>
+                        <div id="editorSocialLogin">
+const socialLogin = UP_SDK.socialLogin({provider:&lt;"facebook" | "google"&gt;})
+                        </div>
+                        <br>
+                        <div class="intro-subheader">
+                           <h3>Initiate social login</h3>
+                           <p><span class="intro-code"><b>&#9758;</b> &nbsp;Call this method when user clicks on social login button. This method will use social <b>access_token</b> and check against UP server.</span></p>
+                        </div>
+                        <div id="editorInitSocial">
+socialLogin.init()
+                        </div>
+                        <p>Response:</p>
+                        <div id="editorSocialRespo">
+{
+    "success": "&lt;true|false&gt;",
+    "error_code": "phone_number_required",
+    "error_message": "Phone is required to verify"
+}
+                        </div>
+                        <p>There can be following cases:</p>
+                        <ol>
+                           <li>Phone no required - When there is no record of the user in UP db.</li>
+                           <li>Phone no is not verified - When the phone no associated with the account was not verified.</li>
+                           <li>Failed to proceed - When the access token is spoofed.</li>
+                           <li>Successful login.</li>
+                        </ol>
+                        <br>
+                        <div class="intro-subheader">
+                           <h3>Case1: Phone no is required</h3>
+                        </div>
+                        <span class="intro-input">error_code: phone_number_required</span>
+                        <p>In this case, user should be asked to enter phone no. And call <span class="intro-input">socialLogin.checkPhone(params)</span>
+                           Params required:
+                        </p>
+                        <div id="editorCaseOnePhone">
+{
+    "phone":"+919833010430"
+}
+                        </div>
+                        <p>This method will send a verification code to phone no. On success, user should be asked to enter verification code. Call <span class="intro-input">socialLogin.register(params)</span></p>
+                        <p>Params required:</p>
+                        <div id="editorCaseOnePin">
+{
+    "pin":"&lt;verificationcode&gt;"
+}
+                        </div>
+                        <p>If <span class="intro-input">success:true</span>, registration is successful, you can also make subsequent API calls until you are calling <span class="intro-input">.logout()</span>.</p>
+                        <br>
+                        <div class="intro-subheader">
+                           <h3>Case 2: Phone no is not validated.</h3>
+                        </div>
+                        <span class="intro-input">error_code: userbiz_phone_not_validated</span>
+                        <p>In this state, user will have to go through "Forgot password flow."</p>
+                        <br>
+                        <div class="intro-subheader">
+                           <h3>Case 3: Access token is spoofed.</h3>
+                        </div>
+                        <span class="intro-input">error_code: email_check_failed</span>
+                        <p>Initiate the login again by calling <span class="intro-input">.init()</span></p>
+                        <br>
+                        <div class="intro-subheader">
+                           <h3>Case 4: Successful login.</h3>
+                        </div>
+                        <p>If <span class="intro-input">success:true</span>, login is successful, you can also make subsequent API calls until you are calling <span class="intro-input">.logout()</span>.</p>
+                     </div>
+                     <br>
+                     <!---------------------- Reusing auth session  ------------------------->
+                     <div class="intro-subheader">
+                        <h2>Reusing auth session</h2>
+                        <p><span class="intro-input">UP_SDK.authManager</span> provides methods to set, delete auth to the existing session.</p>
+                        <p>After successful login, store the auth token, to re-use it later, simply call <span class="intro-input">UP_SDK.authManager.setAuth ( &lt;auth_token&gt;)</span></p>
+                        <p>To delete auth token from the current session, call <span class="intro-input">UP_SDK.authManager.deleteAuth()</span>. Ideally, on logout this should be called.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </main>
+         <!-- ----------------------------footer -------------------------------->
+         <footer>
+            <div class="footer">
+               <div class="row footer-row">
+                  <div class="col-3 column-one">
+                     <div class="col-6">
+                        <a href="https://www.urbanpiper.com">
+                        <img src="../images/logo.png" class="footer-logo"></a>
+                     </div>
+                     <div class="col-12 footer-address">
+                        <h4>UrbanPiper Technology Pvt. Ltd.</h4>
+                        <p style="color: #eeeeee; font-size: 14px;">#204, Brigade IRV Centre<br>Whitefield, Bangalore - 560066</p>
+                     </div>
+                  </div>
+                  <div class="col-6 column-two">
+                     <ul class="footer-contents">
+                        <li>
+                           <h4><b>Company</b></h4>
+                        </li>
+                        <li><a href="https://urbanpiper.com/team.html" target="_blank">About us</a></li>
+                        <li><a href="https://angel.co/urbanpiper-1/jobs" target="_blank">Career</a></li>
+                        <li><a href="https://blog.urbanpiper.com/" target="_blank">Blog</a></li>
+                        <li><a href="https://urbanpiper.com/privacy.html" target="_blank">Privacy Terms</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-9 column-three">
+                     <h4>Contact Us</h4>
+                     <p style="color: #eeeeee;">+91 89718 91163<br><a href="mailto:support@urbanpiper.com">support@urbanpiper.com</a></p>
+                  </div>
+                  <div class="col-12 column-two">
+                     <ul class="footer-contents">
+                        <li>
+                           <h4><b>Products</b></h4>
+                        </li>
+                        <li><a href="https://urbanpiper.com/loyalty.html" target="_blank">Loyalty</a></li>
+                        <li><a href="https://urbanpiper.com/hub.html" target="_blank">Hub</a></li>
+                        <li><a href="">OMS</a></li>
+                        <li><a href="http://satellite.urbanpiper.com" target="_blank">Satellite</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <!----------------------- JS code block---------------------------->
+            <script type="application/javascript">
+               var editorRequestAuth = ace.edit("editorRequestAuth");
+               editorRequestAuth.setTheme("ace/theme/monokai");
+               editorRequestAuth.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorForgotPassword = ace.edit("editorForgotPassword");
+               editorForgotPassword.setTheme("ace/theme/monokai");
+               editorForgotPassword.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorVerifyPhone = ace.edit("editorVerifyPhone");
+               editorVerifyPhone.setTheme("ace/theme/monokai");
+               editorVerifyPhone.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorResendOtp = ace.edit("editorResendOtp");
+               editorResendOtp.setTheme("ace/theme/monokai");
+               editorResendOtp.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorCreateUser = ace.edit("editorCreateUser");
+               editorCreateUser.setTheme("ace/theme/monokai");
+               editorCreateUser.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorResetPassword = ace.edit("editorResetPassword");
+               editorResetPassword.setTheme("ace/theme/monokai");
+               editorResetPassword.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorFacebook = ace.edit("editorFacebook");
+               editorFacebook.setTheme("ace/theme/monokai");
+               editorFacebook.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorGoogle = ace.edit("editorGoogle");
+               editorGoogle.setTheme("ace/theme/monokai");
+               editorGoogle.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorSocialLogin = ace.edit("editorSocialLogin");
+               editorSocialLogin.setTheme("ace/theme/monokai");
+               editorSocialLogin.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorInitSocial = ace.edit("editorInitSocial");
+               editorInitSocial.setTheme("ace/theme/monokai");
+               editorInitSocial.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorSocialRespo = ace.edit("editorSocialRespo");
+               editorSocialRespo.setTheme("ace/theme/monokai");
+               editorSocialRespo.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorCaseOnePhone = ace.edit("editorCaseOnePhone");
+               editorCaseOnePhone.setTheme("ace/theme/monokai");
+               editorCaseOnePhone.getSession().setMode("ace/mode/javascript");
+            </script>
+            <script type="application/javascript">
+               var editorCaseOnePin = ace.edit("editorCaseOnePin");
+               editorCaseOnePin.setTheme("ace/theme/monokai");
+               editorCaseOnePin.getSession().setMode("ace/mode/javascript");
+            </script>
+         </footer>
+      </div>
+   </body>
+</html>

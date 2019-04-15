@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>UrbanPiper Developer Docs | SDK</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="icon" type="image/png" href="../images/favicon.png">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js" type="text/javascript" charset="utf-8"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <!-- ------------------------- Body - header ------------------------>
+   <body>
+      <div class="main-container">
+         <header>
+            <div class="header">
+               <nav>
+                  <ul class="header-nav">
+                     <li><a href="/index.html"><b>UrbanPiper</b> for Developers</a></li>
+                     <li class="header-nav-right button-nav"><a href="#getstarted">Get Started</a></li>
+                     <li class="header-nav-right"><a href="#support">Support</a></li>
+                     <li class="header-nav-right"><a href="#tools">Tools</a></li>
+                     <li class="header-nav-right"><a href="/docs.html">Docs</a></li>
+                  </ul>
+               </nav>
+            </div>
+         </header>
+         <!-- ------------------------- Body - content ------------------------>
+         <main class="content-main">
+            <div class="row">
+               <!-- ------------------------- Left  section ------------------------>
+               <div class="column-left">
+                  <div class="sidenav">
+                     <a href="/login.html">Set up</a>
+                     <a href="/biz_info.html">Biz Info</a>
+                     <a href="/authentication.html">Authentication</a>
+                     <a href="/user.html">User</a>
+                     <a href="/gallery.html">Gallery</a>
+                     <a href="/stores.html">Stores</a>
+                     <a href="/checkout.html">Checkout</a>
+                     <a href="/catalogue.html">Catalogue</a>
+                     <a href="/cart.html">Cart</a>
+                     <a href="/order.html">Order</a>
+                     <a href="/payment-gateway.html">Payment Gateway</a>
+                  </div>
+               </div>
+               <!-------------------------------Right section ------------------------>
+               <div class="column-right">
+                  <div class="container-login">
+                     <div class="intro-header">
+                        <p>CHECKOUT</p>
+                        <p class="intro-desc">A set of client-side functionality for fetching Catalogue, cart and order details</p>
+                     </div>
+                     <hr>
+                     <br>
+                     <div class="intro-subheader">
+                        <h2>Start with a checkout session</h2>
+                        <p>Create a checkout session: <span class="intro-input">let c = UP_SDK.checkoutSession(params)</span></p>
+                        <p>Params (opptional):</p>
+                     </div>
+                     <div id="editorCheckout">
+{
+    "fullfilmentmode":"&lt;delivery|pickup&gt;"
+}
+                     </div>
+                     <p><b>NOTE:</b> Default fullfilment mode is <span class="intro-input">delivery.</span></p>
+                     <br>
+                     <p>This will throw an error if lat/lng is not provided.
+                        This will return <span class="intro-input">success:false</span> in the following case:
+                     </p>
+                     <ol>
+                        <li>No store found.</li>
+                        <li>Store found but temporarily closed.</li>
+                        <li>Store found but closed for the day.</li>
+                     </ol>
+                     <p><b>Note: </b><span class="intro-input">error_message</span> has to be configured in CRM</p>
+                     <p>You can update the value anytime by calling <span class="intro-input">c.update(params)</span></p>
+                     <br>
+                     <div class="intro-subheader">
+                        <h2>Set a store in your checkout session:</h2>
+                        <p><span class="intro-input">.setStore(storeObj)</span> - Read more about <a href="/stores.html">Stores</a></p>
+                        <p><span class="intro-input">.getSelectedStore()</span> - will return selected store.</p>
+                     </div>
+                     <br>
+                     <p>Complete checkout process is described in 3 pages:</p>
+                     <ul class="checkout-list">
+                        <li><a href="/catalogue.html">Catalogue</a></li>
+                        <li><a href="/cart.html">Cart</a></li>
+                        <li><a href="/order.html">Order process</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </main>
+         <!-- ----------------------------footer -------------------------------->
+         <footer>
+            <div class="footer">
+               <div class="row footer-row">
+                  <div class="col-3 column-one">
+                     <div class="col-6">
+                        <a href="https://www.urbanpiper.com">
+                        <img src="../images/logo.png" class="footer-logo"></a>
+                     </div>
+                     <div class="col-12 footer-address">
+                        <h4>UrbanPiper Technology Pvt. Ltd.</h4>
+                        <p style="color: #eeeeee; font-size: 14px;">#204, Brigade IRV Centre<br>Whitefield, Bangalore - 560066</p>
+                     </div>
+                  </div>
+                  <div class="col-6 column-two">
+                     <ul class="footer-contents">
+                        <li>
+                           <h4><b>Company</b></h4>
+                        </li>
+                        <li><a href="https://urbanpiper.com/team.html" target="_blank">About us</a></li>
+                        <li><a href="https://angel.co/urbanpiper-1/jobs" target="_blank">Career</a></li>
+                        <li><a href="https://blog.urbanpiper.com/" target="_blank">Blog</a></li>
+                        <li><a href="https://urbanpiper.com/privacy.html" target="_blank">Privacy Terms</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-9 column-three">
+                     <h4>Contact Us</h4>
+                     <p style="color: #eeeeee;">+91 89718 91163<br><a href="mailto:support@urbanpiper.com">support@urbanpiper.com</a></p>
+                  </div>
+                  <div class="col-12 column-two">
+                     <ul class="footer-contents">
+                        <li>
+                           <h4><b>Products</b></h4>
+                        </li>
+                        <li><a href="https://urbanpiper.com/loyalty.html" target="_blank">Loyalty</a></li>
+                        <li><a href="https://urbanpiper.com/hub.html" target="_blank">Hub</a></li>
+                        <li><a href="">OMS</a></li>
+                        <li><a href="http://satellite.urbanpiper.com" target="_blank">Satellite</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <!----------------------- JS code block---------------------------->
+            <script type="application/javascript">
+               var editorCheckout = ace.edit("editorCheckout");
+               editorCheckout.setTheme("ace/theme/monokai");
+               editorCheckout.getSession().setMode("ace/mode/javascript");
+            </script>
+         </footer>
+      </div>
+   </body>
+</html>
